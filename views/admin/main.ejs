@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/zepto.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/adminCss/main.css">
+</head>
+<body>
+<div class="jumbotron">
+    <h1>优逸客考试管理系统</h1>
+    <span>Welcome UekTestSystem</span>
+</div>
+<div class="backstage">
+
+
+    <div class="backstage-left">
+        <div class="btn-group-vertical" style="margin-left:40px;margin-top:20px;width:200px;">
+            <span type="button" class="btn btn-primary" style="color:white;font-weight:bold;font-size:15px;">后台管理员密码设置</span>
+            <a type="button" class="btn btn-default" target="main" href="/login/add">添加管理员信息</a>
+            <a type="button" class="btn btn-default" target="main" href="/login/showAdmin">查看管理员信息</a>
+        </div>
+
+
+
+
+
+        <div class="btn-group-vertical" style="margin-left:40px;margin-top:30px;width:200px;">
+            <span type="button" class="btn btn-primary" style="color:white;font-weight:bold;font-size:15px;">前台用户信息管理</span>
+            <a type="button" class="btn btn-default" target="main" href="/admin/add1">添加用户</a>
+            <a type="button" class="btn btn-default" href="/admin/showUser" target="main">查看用户</a>
+
+        </div>
+
+
+        <div class="btn-group-vertical" style="margin-left:40px;margin-top:30px;width:200px;">
+            <span type="button" class="btn btn-primary" style="color:white;font-weight:bold;font-size:15px;">分类管理</span>
+            <a href="/admin/category" type="button" class="btn btn-default" target="main"   >添加分类</a>
+            <a href="/admin/showCategory" type="button" class="btn btn-default" target="main">查看分类</a>
+        </div>
+
+
+
+        <div class="btn-group-vertical" style="margin-left:40px;margin-top:30px;width:200px;">
+            <span type="button" class="btn btn-primary" style="color:white;font-weight:bold;font-size:15px;">图书书籍管理</span>
+            <a href="/admin/addBooks" type="button" class="btn btn-default" target="main"   >添加书籍</a>
+            <a href="/admin/showBooks" type="button" class="btn btn-default" target="main">查看书籍</a>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div class="backstage-right">
+        <iframe src="/admin/index" frameborder="0" name="main">
+
+        </iframe>
+
+
+    </div>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
