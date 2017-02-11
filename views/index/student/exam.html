@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>主页</title>
+    <link rel="stylesheet" href="/css/indexCss/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="/css/indexCss/mui.min.css">
+    <link rel="stylesheet" href="/css/indexCss/s_style.css">
+    <script src="/js/indexJs/jquery.js"></script>
+    <script src="/js/indexJs/swiper-3.3.1.min.js"></script>
+    <script src="/js/indexJs/index.js"></script>
+</head>
+<body style="background-color: #ffffff;">
+
+    <!--顶部-->
+    <div class="header">在线考试</div>
+    <div class="exam_online">
+        <div class="exam">
+            <h2>当日测试</h2>
+            <!--<div class="test">-->
+                <!--<span class="date">2月1日</span>-->
+                <!--<span class="title">HTML在线考试50题</span>-->
+                <!--<button><a href="./exam_score.html">查看成绩</a></button>-->
+            <!--</div>-->
+            <%for(var i=0;i< data.length;i++){%>
+            <div class="test">
+                <span class="date"><%=m%>月<%=day%>日</span>
+                <span class="title"><%=data[i].name%></span>
+                <button><a href="/student/test/<%=data[i].id%>">开始测试</a></button>
+            </div>
+            <%}%>
+
+
+        </div>
+
+
+        <div class="exam">
+            <h2>周练</h2>
+            <div class="test">
+                <span class="date">2月1日</span>
+                <span class="title">HTML在线考试50题</span>
+                <button><a href="./exam_score.html">查看成绩</a></button>
+            </div>
+            <div class="test">
+                <span class="date">2月1日</span>
+                <span class="title">HTML在线考试50题</span>
+                <button><a href="./exam_online.html">开始测试</a></button>
+            </div>
+        </div>
+        <div class="exam">
+            <h2>阶段练习</h2>
+            <div class="test">
+                <span class="date">2月1日</span>
+                <span class="title">HTML在线考试50题</span>
+                <button><a href="./exam_score.html">查看成绩</a></button>
+            </div>
+            <div class="test">
+                <span class="date">2月1日</span>
+                <span class="title">HTML在线考试50题</span>
+                <button><a href="./exam_online.html">开始测试</a></button>
+            </div>
+        </div>
+
+    </div>
+    <!--底部-->
+    <div class="footer">
+        <a class="catalog" href="./homepage.html">
+            <div class="icon">
+                <img src="/img/indexImg/home_icon2.png" alt="加载失败">
+            </div>
+            <div class="title">主页</div>
+        </a>
+        <a class="catalog" href="#">
+            <div class="icon">
+                <img src="/img/indexImg/exam_icon2.png" alt="加载失败">
+            </div>
+            <div class="title checked">考试</div>
+        </a>
+        <a class="catalog" href="./my.html">
+            <div class="icon">
+                <img src="/img/indexImg/my_icon.png" alt="加载失败">
+            </div>
+            <div class="title">我</div>
+        </a>
+    </div>
+</body>
+</html>

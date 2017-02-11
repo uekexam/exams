@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="./css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="./css/mui.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/swiper-3.3.1.min.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+<body>
+
+
+<!--顶部-->
+<div class="header">
+    <a href="./my.html" class="back"></a>
+    用户信息
+</div>
+<!--内容区域-->
+<div class="my user_info">
+    <div class="my_info">
+        <span class="con">姓名</span>
+        <span class="info name">郭文涛</span>
+    </div>
+    <div class="my_info">
+        <span class="con">班级</span>
+        <span class="info class">WUIF606</span>
+    </div>
+    <div class="my_info">
+        <span class="con">手机号</span>
+        <span class="info tel">123456789</span>
+    </div>
+</div>
+<script>
+    $(function () {
+        console.log(2);
+        console.log($('.name'));
+        console.log($('.name').text());
+        /*$.get("test.php", { name: "John", time: "2pm" },
+        function(data){
+            console.log(data);
+            //{name:'',class:'',tel:''}
+            $('.name').text(''+data.name+'');
+            $('.class').text(''+data.class+'');
+            $('.tel').text(''+data.tel+'');
+        });*/
+    })
+</script>
+</body>
+</html>

@@ -10,11 +10,23 @@
 <link rel="stylesheet" href="/css/adminCss/admin.css">
 <script src="/js/jquery.min.js"></script>
 <script src="/js/pintuer.js"></script>
+    <style>
+        #wid{
+            width:400px;
+            /*background: red;*/
+            /*margin-left:20%;*/
+        }
+    </style>
+
+
 </head>
 <body>
 
 <div class="panel admin-panel">
-    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+    <div class="panel-head">
+        <strong class="icon-reorder"> 内容列表</strong>
+        <button class="button bg-main icon-check-square-o chakan" type="submit"> 查看信息</button>
+    </div>
     <table class="table table-hover text-center">
 
         <tr>
@@ -38,9 +50,6 @@
     <div class="panel-head" id="add"><strong><span class="icon-pencil-square-o"></span>增加内容</strong></div>
     <div class="body-content">
 
-
-
-
         <form method="post" class="form-x" action=" ">
             <input type="hidden" name="del"  value="0" />
 
@@ -50,7 +59,7 @@
                 </div>
                 <div class="field">
                     <select  style="padding:5px 15px; border:1px solid #ddd;" name="s_id">
-                        <option value="0">一级阶段</option>
+                        <option class="del" value="0">一级阶段</option>
                     </select>
                     <div class="tips"></div>
                 </div>
@@ -71,15 +80,10 @@
                     <label></label>
                 </div>
                 <div class="field">
-                    <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>
+                    <button class="button bg-main icon-check-square-o tijiao" type="submit"> 提交</button>
                 </div>
 
             </div>
-
-
-
-
-
 
         </form>
 
@@ -87,32 +91,100 @@
 
     </div>
 </div>
+<script>
+
+
+//<!--提交按钮-->
+
+	$(".tijiao").on("click",function(){
+//        var s= $("tr:last-child").find("td:nth-child(3)").text();
+//        console.log(s);
+//        s++;
+		$.ajax({
+		   url:'/admin/addStage',
+		   type:'post',
+		   data:{name:$(".input").val(),sid:0,del:0},
+		   success:function(data){
+		   }	
+		})
+	})
+
+//查看信息
+    $(".chakan").on("click",function(){
+        $.ajax({
+            url:'/admin/showStage',
+            type:'get',
+            success:function(data){
+                data.forEach(function(v){
+                    $('<tr data-id="'+v.id+'"><td>'+v.id+'</td><td><input type="text" class="form-control name" value="'+v.name+'"></td><td class="fu">'+v.s_id+'</td><td><input type="text" class="form-control phone" value="'+v.del+'"></td><td><button type="button" class="btn btn-primary delete">删除</button><button type="button" class="btn btn-primary fenlei">添加子分类</button></td></tr>').appendTo("table")
+                })
+            }
+        })
+    })
+
+//删除按钮
+    $("table").on("click",".delete",function(){
+        var tr=$(this).closest("tr");
+        console.log(tr.attr('data-id'))
+        $.ajax({
+            url:'/admin/deleteStage',
+            type:'post',
+            data:{id:tr.attr('data-id')},
+            success:function(data){
+                tr.remove();
+            }
+        })
+    })
+
+//修改信息
+    $("table").on("keyup",".form-control",function(){
+
+        var data={};
+        data.id=$(this).closest("tr").attr('data-id');
+        if($(this).hasClass("name"))
+        {
+            data.name=$(this).val();
+        }
+       else{
+
+        }
+
+//        console.log(data)
+        $.ajax({
+            url:'/admin/updateStage',
+            type:'post',
+            data:data,
+            success:function(r){
+                if(r["state"]=="ok")
+                {
+                    console.log("成功")
+                }
+            }
+        })
+    })
 
 
 
+//添加子分类
+    $("table").on("click",".fenlei",function(){
+        var date={};
+        date.sid=$(this).closest("tr").find("td:nth-child(1)").text();
+        date.del=0;
+
+        var tr=$(this).closest("tr");
+        $.ajax({
+            url:'/admin/addZiStage',
+            type:'post',
+            data:date,
+            success:function(cid){
+                $(this).closest("tr").after('<tr id="wid" data-id="'+ cid+'"><td>'+ cid+'</td><td><input type="text" class="form-control name" value=""></td><td>'+ date.sid+'</td><td><input type="text" class="form-control phone" value="'+ date.del+'"></td><td><button type="button" class="btn btn-primary delete">删除</button></td></tr>');
+            }
+        })
 
 
+    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</script>
 
 </body>
 </html>

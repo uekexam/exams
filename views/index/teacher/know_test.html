@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知识点试题</title>
+    <link rel="stylesheet" href="/css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="/css/indexCss/mui.min.css">
+    <link rel="stylesheet" href="/css/indexCss/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/swiper-3.3.1.min.js"></script>
+    <script src="/js/indexJs/index.js"></script>
+</head>
+<body>
+
+<!--顶部-->
+<div class="header">
+    <a href="javascript:;" class="back"></a>
+    img标签试题内容
+</div>
+<div class="type">
+    <select class="select">
+        <option value="0">请选择试题类型</option>
+        <%for(var i=0; i < data1.length;i++){%>
+        <option value="<%=data1[i].id%>"><%=data1[i].name%></option>
+        <%}%>
+    </select>
+</div>
+<!--作业开始-->
+<div class="task task_draft know_test">
+    <div class="tests">
+
+        <%for(var i=0;i< data.length;i++){%>
+        <% var arr=data[i].stage_id.split(";")%>
+        <%for(var j=0;j< arr.length;j++){%>
+                <%if(cid==arr[j]){%>
+                    <div class="con" style="height:0.6rem;" attr="<%=data[i].type_id%>">
+                        <a href="/teacher/question/<%=data[i].id%>">
+                            <div class="title"><%=data[i].about%></div>
+                        </a>
+                        <input class="choice"  type="checkbox" style="z-index:10;float:right;" name="quest" value="<%=data[i].id%>">
+                            <i></i>
+                    </div>
+                <%}%>
+         <%}%>
+
+        <%}%>
+
+
+    </div>
+</div>
+<!--作业结束-->
+<!--底部-->
+<div class="footer" style="margin-right:0rem;">
+    <a href="javascript:;" class="choice">已选项目(<span>0</span>)</a>
+</div>
+</body>
+<script>
+    $(function(){
+
+
+        $(".select").change(function(){
+            var  values=$(".select").val();
+
+            $("div[attr]").each(function(index,obj){
+                if(values!="0"){
+                    if($(obj).attr("attr")==values){
+                        $(obj).css("display","block");
+                    }else{
+                        $(obj).css("display","none");
+                    }
+                }else{
+                    $(obj).css("display","block");
+                }
+            })
+        });
+
+        $("input[name=quest]").change(function(){
+            var data=$("input:checked").length;
+            localStorage.setItem("message",data);
+            $(".footer span").html(localStorage.getItem("message"));
+        });
+
+
+        $(".footer .choice").click(function(){
+            var str=[];
+           $("input:checked").each(function(index,obj){
+               str+=$(obj).val()+";";
+           })
+            var data=str.slice(0,-1);
+            $.ajax({
+                url:"/teacher/addTask",
+                data:{data:data},
+                type:"post",
+                success:function(e){
+                    location.href="/teacher/"
+                }
+            })
+        })
+
+    })
+</script>
+</html>

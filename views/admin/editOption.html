@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网站信息</title>
+    <link rel="stylesheet" href="/css/adminCss/pintuer.css">
+    <link rel="stylesheet" href="/css/adminCss/admin.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/pintuer.js"></script>
+</head>
+<body>
+
+
+<div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+    <div class="padding border-bottom">
+        <a class="button border-yellow" >试题主干表</a>
+    </div>
+    <table class="table table-hover text-center">
+        <tr>
+            <th width="5%">ID</th>
+            <th>试题主干</th>
+            <th>类型ID</th>
+            <th>阶段</th>
+            <th>DEL</th>
+            <th width="250">操作</th>
+        </tr>
+        <%for(var i=0;i< rows1.length;i++){%>
+        <tr>
+            <td><%=rows1[i].id%></td>
+            <td attr="<%=rows1[i].id%>"><%=rows1[i].about%></td>
+            <td><%=rows1[i].stage_id%></td>
+            <td><%=rows1[i].type_id%></td>
+            <td><%=rows1[i].del%></td>
+            <td>
+                <div class="button-group">
+                    <a type="button" class="button border-main" href="#"><span class="icon-edit"></span>修改</a>
+                    <a class="button border-red" href="javascript:void(0)"><span class="icon-trash-o"></span> 删除</a>
+                </div>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+</div>
+
+
+
+
+
+
+
+<div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+    <div class="padding border-bottom">
+        <a class="button border-yellow" >试题选项表</a>
+    </div>
+    <table class="table table-hover text-center">
+        <tr>
+            <th width="5%">ID</th>
+            <th>选项内容</th>
+            <th>习题ID</th>
+            <th>选项类型</th>
+            <th>DEL</th>
+            <th width="250">操作</th>
+        </tr>
+         <%for(var i=0;i< data.length;i++){%>
+                <tr>
+                    <td><%=data[i].id%></td>
+                    <td attr="<%=data[i].id%>"><%=data[i].con%></td>
+                    <td><%=data[i].q_id%></td>
+                    <td><%=data[i].mark%></td>
+                    <td><%=data[i].del%></td>
+                    <td>
+                        <div class="button-group">
+                            <a type="button" class="button border-main" href="#"><span class="icon-edit"></span>修改</a>
+                            <a class="button border-red" href="javascript:void(0)"><span class="icon-trash-o"></span> 删除</a>
+                        </div>
+                    </td>
+                </tr>
+         <%}%>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder">内容列表</strong>
+</div>
+    <div class="padding border-bottom">
+        <a class="button border-yellow" >试题解析表</a>
+    </div>
+    <table class="table table-hover text-center">
+        <tr>
+            <th width="5%">ID</th>
+            <th>解析内容</th>
+            <th>习题ID</th>
+            <th>DEL</th>
+            <th width="250">操作</th>
+        </tr>
+        <%for(var i=0;i< data1.length;i++){%>
+        <tr>
+            <td><%=data1[i].id%></td>
+            <td attr="<%=data1[i].id%>"><%=data1[i].con%></td>
+            <td><%=data1[i].q_id%></td>
+            <td><%=data1[i].del%></td>
+            <td>
+                <div class="button-group">
+                    <a type="button" class="button border-main" href="#"><span class="icon-edit"></span>修改</a>
+                    <a class="button border-red" href="javascript:void(0)"><span class="icon-trash-o"></span> 删除</a>
+                </div>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+</div>
+
+
+
+
+
+<div class="panel admin-panel">
+    <div class="panel-head"><strong class="icon-reorder">内容列表</strong></div>
+    <div class="padding border-bottom">
+        <a class="button border-yellow" >试题答案表</a>
+    </div>
+    <table class="table table-hover text-center">
+        <tr>
+            <th width="5%">ID</th>
+            <th>习题答案</th>
+            <th>习题ID</th>
+            <th>DEL</th>
+            <th width="250">操作</th>
+        </tr>
+        <%for(var i=0;i< rows.length;i++){%>
+        <tr>
+            <td><%=rows[i].id%></td>
+            <td attr="<%=rows[i].id%>"><%=rows[i].correct%></td>
+            <td><%=rows[i].q_id%></td>
+            <td><%=rows[i].del%></td>
+            <td>
+                <div class="button-group">
+                    <a type="button" class="button border-main" href="#"><span class="icon-edit"></span>修改</a>
+                    <a class="button border-red" href="javascript:void(0)"><span class="icon-trash-o"></span> 删除</a>
+                </div>
+            </td>
+        </tr>
+        <%}%>
+    </table>
+</div>
+
+
+
+
+
+</body>
+
+<script>
+    $(function(){
+            $(".admin-panel").eq(0).delegate("td[attr]","dblclick",function(){
+                var that=$(this)
+                var val=$(this).html();
+                  $(this).html("");
+              $(this).append("<input type='text' value="+val+">");
+                $("input").focus();
+              $("input").blur(function(){
+                  var data=$(this).val();
+                  that.html(data).remove($("input"));
+              })
+            });
+
+
+        $(".admin-panel").eq(1).delegate("td[attr]","dblclick",function(){
+            var that=$(this)
+            var val=$(this).html();
+            $(this).html("");
+            $(this).append("<input type='text' value="+val+">");
+            $("input").focus();
+            $("input").blur(function(){
+                var data=$(this).val();
+                that.html(data).remove($("input"));
+            })
+        });
+
+
+
+        $(".admin-panel").eq(2).delegate("td[attr]","dblclick",function(){
+            var that=$(this)
+            var val=$(this).html();
+            $(this).html("");
+            $(this).append("<input type='text' value="+val+">");
+            $("input").focus();
+            $("input").blur(function(){
+                var data=$(this).val();
+                if(data!=val){
+                    $.ajax({
+                        url:"/update"
+                    })
+                }
+                that.html(data).remove($("input"));
+            })
+        });
+
+
+
+        $(".admin-panel").eq(3).delegate("td[attr]","dblclick",function(){
+            var that=$(this)
+            var val=$(this).html();
+            $(this).html("");
+            $(this).append("<input type='text' value="+val+">");
+            $("input").focus();
+            $("input").blur(function(){
+                var data=$(this).val();
+                that.html(data).remove($("input"));
+            })
+        });
+
+
+
+
+
+    })
+</script>
+
+
+
+</html>

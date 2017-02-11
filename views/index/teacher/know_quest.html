@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知识点试题</title>
+    <link rel="stylesheet" href="/css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="/css/indexCss/mui.min.css">
+    <link rel="stylesheet" href="/css/indexCss/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/swiper-3.3.1.min.js"></script>
+    <script src="/js/indexJs/index.js"></script>
+</head>
+<body>
+
+<!--顶部-->
+<div class="header">
+    <a href="javascript:;" class="back"></a>
+    img标签试题内容
+</div>
+<!--作业开始-->
+<div class="task task_draft know_test">
+    <div class="tests">
+        <%if(data1==""){%>
+        <div class="con">
+            <a href="#">
+                <div class="title"><%=data[0].about%></div>
+            </a>
+        </div>
+        <%}else{%>
+            <div class="con">
+                <a href="#">
+                    <div class="title"><%=data[0].about%></div>
+                    <div class="option">
+                        <%for(var i=0; i < data1.length;i++){%>
+                        <div class="opt"><%=data1[i].con%></div>
+                        <%}%>
+                    </div>
+                </a>
+            </div>
+        <%}%>
+
+
+    </div>
+</div>
+<!--作业结束-->
+<!--底部-->
+<div class="footer">
+    <a href="javascript:;" class="choice">已选项目(<span>0</span>)</a>
+</div>
+<script>
+    $(function(){
+            $(".footer span").html(localStorage.getItem("message"))
+    })
+</script>
+</body>
+</html>

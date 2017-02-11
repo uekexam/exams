@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>知识点试题</title>
+    <link rel="stylesheet" href="/css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="/css/indexCss/mui.min.css">
+    <link rel="stylesheet" href="/css/indexCss/style.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/swiper-3.3.1.min.js"></script>
+    <script src="/js/indexJs/index.js"></script>
+</head>
+<body>
+
+<!--顶部-->
+<div class="header">
+    <a href="javascript:;" class="back"></a>
+    img标签试题内容
+</div>
+<!--作业开始-->
+<div class="task task_draft know_test">
+    <div class="tests">
+        <% var arr=data1[0].split(";")%>
+        <%for(var i=0;i< data.length;i++){%>
+        <%for(var j=0;j< arr.length;j++){%>
+        <%if(data[i].id==arr[j]){%>
+        <div class="con" style="height:0.6rem;" attr="<%=data[i].type_id%>">
+            <a href="/teacher/question/<%=data[i].id%>">
+                <div class="title"><%=data[i].about%></div>
+            </a>
+            <i></i>
+        </div>
+                <%}%>
+            <%}%>
+        <%}%>
+
+
+    </div>
+</div>
+<!--作业结束-->
+<!--底部-->
+</html>
