@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/css/adminCss/admin.css">
 <script src="/js/adminJs/jquery.js"></script>
 <script src="/js/adminJs/pintuer.js"></script>
+<script src="/js/adminJs/jquery.validate.min.js"></script>
 </head>
 <body>
 <form method="post" action="/admin/delteacherall">
@@ -192,5 +193,36 @@
             }
         });
     }
+    /*teacher验证*/
+    $("#form").validate({
+        rules: {
+            jobnum:"required",
+            tname: "required",
+            cid:"required",
+            pass1: {
+                required: true,
+                minlength: 6
+            },
+            pass2: {
+                required: true,
+                minlength: 6,
+                equalTo: "#pass1"
+            },
+        },
+        messages: {
+            jobnum:"required",
+            tname: "required",
+            cid:"必填",
+            pass1: {
+                required: "必填",
+                minlength: "不得小于6位数"
+            },
+            pass2: {
+                required: "必填",
+                minlength: "不得小于6位数",
+                equalTo: "两次密码输入不一致"
+            }
+        }
+    })
 </script>
 </body></html>

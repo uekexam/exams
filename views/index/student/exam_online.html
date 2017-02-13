@@ -21,9 +21,7 @@
 </div>
 <div class="exam_online exam_test">
     <div class="exam">
-        <h2>共<%=data1[0].length%>题，每题2分，总分<%=data1[0].length*2%>分</h2>
-
-
+        <h2>共<%=data1.length%>题，每题2分，总分<%=data1[0].length*2%>分</h2>
 
         <%var num=1%>
         <% var arr=data1.split(";")%>
@@ -54,7 +52,6 @@
 </body>
 <script>
     $(function(){
-        var flag=true;
         $(".test .title").on("click",function(){
             var id=$(this).next(".option").attr("attr");
             var that=$(this);
@@ -62,15 +59,36 @@
                 url:"/student/option/"+id+"",
                 type:"post",
                 success:function(data){
-                    if(flag){
                         data.forEach(function(v){
                             $('<a href="javascript:;"><span class="icon">'+ v.mark+'</span>'+ v.con+'</a>').appendTo(that.next(".option"));
                         })
-                        flag=false;
-                    }
 
                 }
-            })
+            });
+
+            $.ajax({
+                url:"/student/solution/"+id+"",
+                type:"post",
+                success:function(data){
+                    data.forEach(function(v){
+                        $('<a href="javascript:;"><span class="icon">'+ v.mark+'</span>'+ v.con+'</a>').appendTo(that.next(".option"));
+                    })
+
+                }
+            });
+
+
+
+
+
+        })
+
+
+
+        $(".submit").click(function(){
+            if(prompt("你确定要提交吗？")){
+
+            }
         })
     })
 </script>

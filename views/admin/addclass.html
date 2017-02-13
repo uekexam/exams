@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="/css/adminCss/admin.css">
 <script src="/js/adminJs/jquery.js"></script>
 <script src="/js/adminJs/jpintuer.js"></script>
+    <script src="/js/adminJs/jquery.validate.min.js"></script>
 </head>
 <body>
 <form method="post" action="/admin/delclassall">
@@ -171,5 +172,16 @@
             }
         });
     }
+    /*class验证*/
+    $("#form").validate({
+        rules: {
+            genre:"required",
+            cname: "required"
+        },
+        messages: {
+            genre:"必填",
+            cname: "必填"
+        }
+    })
 </script>
 </body></html>

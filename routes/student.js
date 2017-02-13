@@ -32,7 +32,8 @@ router.use("/test/:id",function(req,res,next){
                     }
                     var newarr=arr.slice(0,-1);
                     pool.getConnection(function(erro,conn){
-                        conn.query("SELECT * FROM question",function(error,rows,fields){
+                        conn.query("SELECT * FROM questsearch" +
+                            "",function(error,rows,fields){
                             conn.release();
                             if(!error){
                                 res.render('index/student/exam_online',{data:rows,data1:newarr});

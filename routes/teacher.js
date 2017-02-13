@@ -120,7 +120,7 @@ router.use("/showQuest/:id",function(req,res,next){
               conn.query("SELECT * FROM question",function(error,rows,fields){
                 conn.release();
                 if(!error){
-                  res.render('index/teacher/exam_online',{data:rows,data1:newarr});
+                  res.render('index/teacher/show_task',{data:rows,data1:newarr});
                 }
               })
         })

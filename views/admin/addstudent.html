@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/adminCss/admin.css">
     <script src="/js/adminJs/jquery.js"></script>
     <script src="/js/adminJs/pintuer.js"></script>
+    <script src="/js/adminJs/jquery.validate.min.js"></script>
 </head>
 <body>
 <form method="post" action="/admin/delstudentall">
@@ -191,6 +192,37 @@
     function check(id){
         alert(id);
     }
+    /*student验证*/
+    $("#form").validate({
+        rules: {
+            c_id:"required",
+            sname: "required",
+            phone:"required",
+            pass1: {
+                required: true,
+                minlength: 6
+            },
+            pass2: {
+                required: true,
+                minlength: 6,
+                equalTo: "#pass1"
+            },
+        },
+        messages: {
+            c_id:"必填",
+            sname: "必填",
+            phone:"必填",
+            pass1: {
+                required: "必填",
+                minlength: "不得小于6位数"
+            },
+            pass2: {
+                required: "必填",
+                minlength: "不得小于6位数",
+                equalTo: "两次密码输入不一致"
+            }
+        }
+    })
 </script>
 </body>
 </html>
